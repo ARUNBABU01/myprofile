@@ -1,0 +1,71 @@
+{
+  "name": "arunbabu-profile",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@babel/helper-compilation-targets": "^7.20.7",
+    "@date-io/moment": "^2.16.1",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@fontsource/roboto": "^4.5.8",
+    "@mui/icons-material": "^5.11.0",
+    "@mui/lab": "^5.0.0-alpha.115",
+    "@mui/material": "^5.11.7",
+    "@mui/styles": "^5.11.2",
+    "@mui/system": "^5.11.4",
+    "@mui/x-data-grid": "^5.17.19",
+    "@mui/x-date-pickers": "^5.0.17",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "chart.js": "^4.2.0",
+    "d3.js": "^0.0.2-security",
+    "date-fns": "^2.29.3",
+    "dotenv": "^16.0.3",
+    "file-saver": "^2.0.5",
+    "formik": "^2.2.9",
+    "formik-material-ui": "^4.0.0-alpha.2",
+    "http-proxy-middleware": "^2.0.6",
+    "immer": "^9.0.19",
+    "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.5.28",
+    "material-table": "^1.63.0",
+    "moment": "^2.29.4",
+    "nodemon": "^2.0.20",
+    "notistack": "^2.0.8",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.6.2",
+    "react-scripts": "^5.0.1",
+    "react-transition-group": "^4.4.5",
+    "typeface-roboto": "^1.1.13",
+    "use-immer": "^0.8.1",
+    "web-vitals": "^2.1.4",
+    "yup": "^0.32.11"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
