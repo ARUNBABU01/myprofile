@@ -5,6 +5,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import { Paper } from '@mui/material';
 
 
 export default function SkillTableMUI(props){
@@ -18,7 +19,7 @@ export default function SkillTableMUI(props){
 
 
   return (
-    <TableContainer >
+    <TableContainer component={Paper} elevation={2} sx={{ maxWidth: 800 }}>
       <Table sx={{ maxWidth: 800 }} aria-label="Skill table">
         <TableHead>
           <TableRow>

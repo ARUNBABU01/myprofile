@@ -35,11 +35,11 @@ export default function Education(props) {
 
         {<TimelineContent sx={{ py: '12px', px: 2 }}>
           {school && 
-          <Typography variant="h6" component="span" color="info.main">
+          <Typography variant="h6" component="div" color="info.main">
             {school}
           </Typography>}
-          {location && <Typography variant='body1'><b>Location:</b> {location}</Typography>}
-          {degree && <Typography variant='body2'><b>Degree:</b> {degree + ' ' + field_of_study}</Typography>}
+          {location && <Typography variant='body1' color="text.secondary"><b>Location:</b> {location}</Typography>}
+          {degree && <Typography variant='body2' color="text.secondary"><b>Degree:</b> {degree + ' ' + field_of_study}</Typography>}
         </TimelineContent>}
 
       </TimelineItem>

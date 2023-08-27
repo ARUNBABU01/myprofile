@@ -1,10 +1,14 @@
 
-.home-container {
-    /* display:flex; */
-    /* justify-content: left;
+:root {
+  --nav-tabs-height: 60px;
+}
+
+/* .home-container {
+    display:flex;
+    justify-content: left;
     align-items: center;
-    min-height: 100vh; */
-  }
+    min-height: 100vh;
+} */
   
   .background-image {
     position: absolute;
@@ -134,12 +138,13 @@
 }
 
 .icon-entry {
-  animation: curved-entry 3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  /* animation: curved-entry 3s cubic-bezier(0.68, -0.55, 0.265, 1.55); */
+  /* transform-origin: center; */
 }
 
 /* Circular Rotation */
 @keyframes circular-rotation {
-  0%, 100% {
+  0% {
     transform: rotate(0deg);
   }
   25% {
@@ -151,14 +156,18 @@
   75% {
     transform: rotate(270deg);
   }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .icon-container.rotate {
   /* animation: circular-rotation 10s linear infinite; */
+  animation: circular-rotation 10s linear 2s;
 }
 
 .rotate-animation {
-  animation: rotate 3s linear forwards;
+  animation: rotate 2s linear forwards;
 }
 
 @keyframes rotate {
@@ -168,5 +177,23 @@
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+.vanta-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - var(--nav-tabs-height));
+  z-index: -1;
+}
+
+@keyframes react-icon-animation {
+  0% {
+    transform: translateX(var(--react-initial-x)) translateY(var(--react-initial-y));
+  }
+  100% {
+    transform: translateX(var(--react-actual-x)) translateY(var(--react-actual-y));
   }
 }

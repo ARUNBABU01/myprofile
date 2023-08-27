@@ -65,11 +65,11 @@ export default function Experience(props) {
 
         {<TimelineContent sx={{ py: '12px', px: 2 }}>
           {company && 
-          <Typography variant="h6" component="span" color="info.main">
+          <Typography variant="h6" component="div" color="info.main">
             {company}
           </Typography>}
-          {location && <Typography variant='body1'><b>Location:</b> {location}</Typography>}
-          {job_title && <Typography variant='body2'><b>Title:</b> {job_title}</Typography>}
+          {location && <Typography variant='body1'  color="text.secondary"><b>Location:</b> {location}</Typography>}
+          {job_title && <Typography variant='body2'  color="text.secondary"><b>Title:</b> {job_title}</Typography>}
           <br/>
           {skills && <Typography variant='caption' color="text.secondary"><b>Skills:</b> 
           

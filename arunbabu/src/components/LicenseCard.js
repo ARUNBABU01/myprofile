@@ -1,10 +1,5 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import { Avatar, Chip, Grid } from '@mui/material';
-import { Directions, LinkedIn } from '@mui/icons-material';
+import { Avatar, Chip } from '@mui/material';
 
 
 export default function LicenseCard(props) {
@@ -44,6 +39,7 @@ return (
                  size="medium" key={'lic' + name} label={name} variant="outlined" 
                  avatar={<Avatar variant='outlined' style={{ backgroundColor:"#0e76a8" }}>{icon !== null ? icon : issuing_org[0].toUpperCase()}</Avatar>}
                  color="warning"
+                 sx={{marginBottom:1}}
             />
 
 )

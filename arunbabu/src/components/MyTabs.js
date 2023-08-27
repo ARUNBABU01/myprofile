@@ -5,6 +5,14 @@ import Tab from '@mui/material/Tab';
 import {Home, Info, Psychology, WorkHistory, 
     School, EmojiEvents, ContactMail, Construction} from '@mui/icons-material';
 import { Link } from "react-router-dom";
+import { styled } from "@mui/material/styles";
+import { List, useMediaQuery } from "@mui/material";
+import ScrollContainer from 'react-indiana-drag-scroll';
+import { ProgramIcon } from './ProgramIcon';
+
+const StyledList = styled(List)({
+  // Your existing styles...
+})
 
 export default function NavTabs() {
   const [value, setValue] = React.useState(0);
@@ -27,13 +35,16 @@ export default function NavTabs() {
   };
 
   const navTabsHeight = 60
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down('sm'));
 
   return (
-    <Box sx={{ width: '100%',height: `${navTabsHeight}px` }} >
-      <Tabs value={value} 
+    <Box sx={{ width: '100%' }} >
+      <Tabs 
+        value={value} 
         onChange={handleChange}
         aria-label="My nav tabs" 
-        variant="scrollable"
+        variant={isMobile ? "scrollable" : "standard"}
+        // orientation={isMobile ? "auto": "auto"}
         scrollButtons="auto"
         >
         {menu.map( (myMenu,index) => {
@@ -47,6 +58,15 @@ export default function NavTabs() {
                  />)
         })}
       </Tabs>
+      {value === 8 && (
+        <ScrollContainer className="tech-stack-container">
+          <ProgramIcon icon="react.png" language="React" />
+          <ProgramIcon icon="node.png" language="Node.js" />
+          <ProgramIcon icon="mongodb.png" language="MongoDB" />
+          <ProgramIcon icon="css.png" language="CSS" />
+          <ProgramIcon icon="javascript.png" language="JavaScript" />
+        </ScrollContainer>
+      )}
     </Box>
   );
 }

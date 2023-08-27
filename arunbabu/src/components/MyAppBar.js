@@ -22,7 +22,7 @@ const LogoWrapper = styled("div")(({theme}) => ({
     "&:hover":{
         backgroundColor:alpha(theme.palette.primary.light,0.25),
     },
-    padding:theme.spacing(0,3),
+    padding:theme.spacing(1,2),
     height:"100%",
     position:"relative",
     pointerEvents:"none",

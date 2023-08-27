@@ -1,36 +1,21 @@
-// import React from 'react'
-// import { descriptions } from '../setup'
-// import MaterialTable from 'material-table'
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import { Styles } from '../Styles';
+import { Box } from '@mui/system';
+import { Grid } from '@mui/material';
 
-// export default function SkillTable(props){
+export default function SkillTable(props) {
+  const { skill } = props;
 
-
-//     const experienceList = ["skill", "experience","version","last_used"]
-//     const {data, title} = props
-//     const tempCols = experienceList.map( (key) => {
-//         return ( { title: descriptions[key].name, field: key } ) } )       
-    
-//     const newData = data.map( d => {
-//         const {skill,experience_years, experience_months,version, last_used} = d
-//         return {skill,experience: `${experience_years} years ${experience_months} months`,version, last_used}
-//     })
-
-
-//             return(
-//                 <MaterialTable
-//                 columns={tempCols}
-//                 data={newData}
-//                 title={title}
-//                 options={{
-//                     filtering: false,
-//                     search: false,
-//                     selection: false,
-//                     showTitle:true,
-//                     pageSize:newData.length,
-//                     // pageSizeOptions:[5,10,20,50,100],
-//                   }}
-//                 />
-//             )
-// }
-    
-
+  return (
+    <Grid item variant="outlined">
+      <div>
+        <Typography variant="h6" component="div" gutterBottom>
+          #{skill}
+        </Typography>
+      </div>
+    </Grid>
+  );
+}

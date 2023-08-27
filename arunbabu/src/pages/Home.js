@@ -4,63 +4,94 @@ import { CSSTransition } from "react-transition-group";
 import "./Home.css"; // Import your custom CSS file for Home
 import { ProgramIcon } from "../components/ProgramIcon";
 import HALO from "vanta/dist/vanta.halo.min";
+import BIRDS from "vanta/dist/vanta.birds.min";
 import image from "../assets/Myphoto4.svg";
+import styled, {keyframes} from 'styled-components'
 
 const NAV_TABS_HEIGHT = 60;
-const ADDITIONAL_SPACE = 50;
-const COMPONENT_HEIGHT =
-  window.innerHeight - NAV_TABS_HEIGHT - ADDITIONAL_SPACE;
+const ADDITIONAL_SPACE = 80;
+const COMPONENT_HEIGHT = window.innerHeight - NAV_TABS_HEIGHT - ADDITIONAL_SPACE;
 
 const dynamicImportImage = (name) => {
   return require(`../assets/${name}-svgrepo-com.svg`);
 };
 
+const transformPosition = (props) => {
+const {centerX, centerY} = props
+// const iconX = this.getBoundingClientRect().x;
+// const iconY = this.getBoundingClientRect().y;
+// // const currentAngle = 0;
+// const AB = Math.abs(centerX - iconX);
+// const BC = Math.abs(centerY - iconY);
+// const radius = Math.sqrt((AB * AB) + (BC * BC)) //Pythagoras
+// const angle = Math.tan(BC/AB)
+// const increaseRadius = radius + 100;
+
+// cubic-bezier(0.68, -0.55, 0.265, 1.55)
+
+ return ( keyframes`
+0% {
+  transform: translateX(${centerX}px) translateY(${centerY}px);
+}
+
+100% {
+  transform: translateX(0) translateY(0);
+}
+`)
+}
+
+
+const IconEntry = styled.div`
+animation: ${props => transformPosition(props)} 3s ;
+  transform-origin: center;
+  `
+
 export default function HomeBase() {
   const [showIconContainer, setShowIconContainer] = useState(false);
-  const [rotateIcons, setRotateIcons] = useState(false);
+  const centerIconRef = useRef(null)
+  const [centerX, setCenterX] = useState(0);
+  const [centerY, setCenterY] = useState(0);
+  const centerIcon = centerIconRef.current
 
-  const startRotation = () => {
+
+
+  const startEntry = () => {
     setShowIconContainer(true);
-    setRotateIcons(true);
-    setTimeout(() => {
-      setRotateIcons(false);
-    }, 3000);
+    // setRotateIcons(true);
+    // setTimeout(() => {
+    //   setRotateIcons(false);
+    // }, 3000);
   };
 
   useEffect(() => {
     setTimeout(() => {
-      // startRotation();
+      startEntry();
     }, 1000);
 
+
     if (showIconContainer) {
-      const icons = document.querySelectorAll(".icon-rotate");
+      const icons = document.querySelectorAll(".icon-entry");
       if (icons.length > 0) {
         const centerIcon = document.querySelector(".icon-javascript");
-        const centerX =
+        const _centerX =
           centerIcon.getBoundingClientRect().x + centerIcon.offsetWidth / 2;
-        const centerY =
+        const _centerY =
           centerIcon.getBoundingClientRect().y + centerIcon.offsetHeight / 2;
-        const radius = 100;
-        const angleIncrement = (2 * Math.PI) / icons.length;
-        let currentAngle = 0;
+        setCenterX(() => _centerX);
+        setCenterY(() => _centerY);
 
-        const interval = setInterval(() => {
-          if (currentAngle >= 2 * Math.PI) {
-            clearInterval(interval);
-            setRotateIcons(false);
-          }
+        icons.forEach(icon => {
+          const iconX = icon.getBoundingClientRect().x;
+          const iconY = icon.getBoundingClientRect().y;
+          // const currentAngle = 0;
+          const AB = Math.abs(centerX - iconX);
+          const BC = Math.abs(centerY - iconY);
+          const radius = Math.sqrt((AB * AB) + (BC * BC)) //Pythagoras
+          const angle = Math.tan(BC/AB)
+          const increaseRadius = radius + 100;
 
-          icons.forEach((icon) => {
-            const x = centerX + radius * Math.cos(currentAngle);
-            const y = centerY + radius * Math.sin(currentAngle);
-            icon.style.transform = `translate(${x}px), ${y}px`;
-            currentAngle += angleIncrement;
-          });
+        })
 
-          return () => {
-            clearInterval(interval);
-          };
-        }, 50);
       }
     }
   }, [showIconContainer]);
@@ -69,18 +100,22 @@ export default function HomeBase() {
   const myRef = useRef(null);
   useEffect(() => {
     if (!vantaEffect) {
-      const newMinHeight = Math.min(COMPONENT_HEIGHT, window.innerHeight);
+      try {
+        const newMinHeight = Math.min(COMPONENT_HEIGHT, window.innerHeight);
       const newMinWidth = Math.min(window.innerWidth, window.innerHeight);
-      setVantaEffect(
-        HALO({
-          el: myRef.current,
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: newMinHeight,
-          minWidth: newMinWidth,
-        })
+      setVantaEffect(HALO({
+        el: myRef.current,
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: newMinHeight,
+        minWidth: newMinWidth,
+      })
       );
+      } catch (error) {
+        console.log('Vanta error: ', error);
+      }
+      
     }
     return () => {
       if (vantaEffect) vantaEffect.destroy();
@@ -89,7 +124,7 @@ export default function HomeBase() {
 
   return (
     <>
-      <div ref={myRef} style={{ margin: 0, padding: 0, marginLeft: "-50px" }}>
+      <div ref={myRef} style={{ margin: 0, padding: 0, marginLeft: "-50px", height:"100%" }}>
         <Grid className="home-container">
           <div
             className="background-image"
@@ -111,10 +146,11 @@ export default function HomeBase() {
               >
                 <Grid
                   container
+                  item
                   justifyContent="center"
-                  alignItems="top"
+                  alignItems="center"
                   className="content-container"
-                  xs={4}
+                  xs={12}
                   sm={4}
                   height={COMPONENT_HEIGHT}
                 >
@@ -125,13 +161,14 @@ export default function HomeBase() {
                     spacing={6}
                     className="text-container"
                     height={"100%"}
+                    justifyContent={"center"}
                   >
                     <Grid
                       item
                       container
                       direction="row"
                       display="flex"
-                      justifyContent={"flex-start"}
+                      justifyContent={"center"}
                     >
                       <Typography variant="h2" className="highlight">
                         Hi, I'm Arun Babu...
@@ -152,8 +189,9 @@ export default function HomeBase() {
                 </Grid>
                 <Grid
                   container
+                  item
                   direction={"row"}
-                  xs={4}
+                  xs={12}
                   sm={4}
                   alignItems="center"
                   justifyContent="center"
@@ -163,8 +201,6 @@ export default function HomeBase() {
                     item
                     container
                     direction="column"
-                    xs={4}
-                    sm={4}
                     className="icon-container rotate"
                     alignItems="center"
                     justifyContent="center"
@@ -177,9 +213,7 @@ export default function HomeBase() {
                         <ProgramIcon
                           icon={dynamicImportImage("nodejs")}
                           language="Node.js"
-                          cssClass={`icon-entry icon-rotate ${
-                            rotateIcons ? "rotate-animation" : ""
-                          }`}
+                          // cssClass={`icon-entry`}
                         />
                         <div className="empty"></div>
                         <div className="empty"></div>
@@ -189,9 +223,7 @@ export default function HomeBase() {
                         <ProgramIcon
                           icon={dynamicImportImage("reactjs")}
                           language="React"
-                          cssClass={`icon-entry icon-rotate ${
-                            rotateIcons ? "rotate-animation" : ""
-                          }`}
+                          cssClass={`icon-entry`}
                         />
                         <div className="empty"></div>
                         <div className="empty"></div>
@@ -201,9 +233,7 @@ export default function HomeBase() {
                         <ProgramIcon
                           icon={dynamicImportImage("angular")}
                           language="Angular"
-                          cssClass={`icon-entry icon-rotate ${
-                            rotateIcons ? "rotate-animation" : ""
-                          }`}
+                          cssClass={`icon-entry`}
                         />
                       </div>
                       <div className="row">
@@ -223,9 +253,7 @@ export default function HomeBase() {
                         <ProgramIcon
                           icon={dynamicImportImage("express")}
                           language="Express.js"
-                          cssClass={`icon-entry icon-rotate ${
-                            rotateIcons ? "rotate-animation" : ""
-                          }`}
+                          cssClass={`icon-entry`}
                         />
                         <div className="empty"></div>
                         <div className="empty"></div>
@@ -235,9 +263,7 @@ export default function HomeBase() {
                         <ProgramIcon
                           icon={dynamicImportImage("nestjs")}
                           language="Nest.js"
-                          cssClass={`icon-entry icon-rotate ${
-                            rotateIcons ? "rotate-animation" : ""
-                          }`}
+                          cssClass={`icon-entry`}
                         />
                       </div>
                       <div className="row">
@@ -247,9 +273,7 @@ export default function HomeBase() {
                         <ProgramIcon
                           icon={dynamicImportImage("typescript")}
                           language="TypeScript"
-                          cssClass={`icon-entry icon-rotate ${
-                            rotateIcons ? "rotate-animation" : ""
-                          }`}
+                          cssClass={`icon-entry`}
                         />
                         <div className="empty"></div>
                         <div className="empty"></div>
@@ -262,13 +286,14 @@ export default function HomeBase() {
                   item
                   container
                   direction={"column"}
-                  xs={4}
+                  xs={12}
                   sm={4}
                   className="db-container"
                   alignItems="center"
                   justifyContent="center"
                 >
-                  <div className="matrix-grid">
+                  <div className="matrix-grid" alignItems="center"
+                    justifyContent="center">
                     <div className="row">
                       <ProgramIcon
                         icon={dynamicImportImage("postgresql")}
