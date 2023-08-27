@@ -1,22 +1,15 @@
 import React from 'react'
-import { descriptions } from '../setup'
-import MaterialTable from 'material-table'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 
 
 export default function SkillTableMUI(props){
 
-
-    const experienceList = ["skill", "experience","version","last_used"]
-    const {data, title} = props
-    const tempCols = experienceList.map( (key) => {
-        return ( { title: descriptions[key].name, field: key } ) } )       
+    const {data} = props  
     
     const newData = data.map( d => {
         const {skill,experience_years, experience_months,version, last_used} = d

@@ -65,6 +65,14 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/a
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
+#### Firebase and GO-daddy
+To deploy in firebase and GOdaddy.
+[https://damianztone.medium.com/deploy-a-react-app-with-firebase-hosting-and-godaddy-b85c993e750b](https://damianztone.medium.com/deploy-a-react-app-with-firebase-hosting-and-godaddy-b85c993e750b)
+
+To update database.rules.json 
+Visit [https://firebase.google.com/docs/database/security](https://firebase.google.com/docs/database/security) to learn more about security rules.
+
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+

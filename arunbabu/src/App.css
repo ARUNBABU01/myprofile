@@ -1,3 +1,5 @@
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
 .App {
   text-align: center;
 }
@@ -64,10 +66,14 @@
   -webkit-transform-origin: 0% 100%;
   -webkit-transform: scaleX(0.00001);
   -webkit-transition: -webkit-transform 2s ease-in-out;
+  transform-origin: 0% 100%;
+  transform:  scaleX(0.00001);
+  transition: transform 2s ease-in-out;
   outline: 0;
 }
 .panel:target {
   -webkit-transform: scaleX(1);
+  transform: scaleX(1);
 }
 
 .slide-in {

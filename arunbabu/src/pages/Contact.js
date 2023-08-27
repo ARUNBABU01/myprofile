@@ -8,25 +8,27 @@ import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import LanguageIcon from '@mui/icons-material/Language';
 import { Styles } from "../Styles";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
+import GitHubIcon from '@mui/icons-material/GitHub';
+import { ContactItem } from "../components/ContactItem";
 
 
+const contactIcons = {
+    email: {icon: MailOutlineIcon, color:"#BB001B"},
+    alternate_email:{icon: AlternateEmailIcon, color:"#EA4335"},
+    mobile:{icon: SmartphoneIcon, color:"#ffe082"},
+    whatsapp:{icon: WhatsAppIcon, color:"#4FCE5D"},
+    linkedin:{icon: LinkedInIcon, color:"#0e76a8"},
+    github:{icon: GitHubIcon, color:"#primary"},
+    xing:{icon: "", color:"#"},
+    website:{icon: LanguageIcon, color:"#primary"},
+    }
 
 export default function Contact(){
 
     const classes = Styles()
     
         const contactData = myprofile.contact_info
-
-        const customComp = (props) => {
-            const {icon,text} = props
-            return (
-                    <Grid item>
-                        <SmartphoneIcon  sx={{ fontSize: 40 }} color="primary" />
-                        <Typography>9094023639</Typography>
-                    </Grid>
-            )
-        }
 
     return(
 <>
@@ -40,30 +42,11 @@ export default function Contact(){
 <br />
 <CSSTransition key={'csscontact'} in={true} classNames={classes.slideInMUI} timeout={2000}>
     <div>
-        <Grid container direction="row" alignItems="center" spacing={1}>
-            <Grid item><SmartphoneIcon  sx={{ fontSize: 40 , color:"#ffe082" }}  /></Grid>
-            <Grid item ><Typography align="justify">{contactData.mobile}</Typography></Grid>
-        </Grid>
-        <Grid container direction="row" alignItems="center" spacing={1}>
-        <Grid item><WhatsAppIcon sx={{ fontSize: 40, color:"#4FCE5D"  }} /></Grid>
-        <Grid item ><Typography align="justify">{contactData.whatsapp}</Typography></Grid>
-        </Grid>
-        <Grid container direction="row" alignItems="center" spacing={1}>
-        <Grid item><MailOutlineIcon sx={{ fontSize: 40, color:"#BB001B"  }} /></Grid>
-            <Grid item ><Typography align="justify">{contactData.email}</Typography></Grid>
-        </Grid>
-        <Grid container direction="row" alignItems="center" spacing={1}>
-        <Grid item> <AlternateEmailIcon sx={{ fontSize: 40, color:"#EA4335"  }} /></Grid>
-            <Grid item ><Typography align="justify">{contactData.alternamte_email}</Typography></Grid>
-        </Grid>
-        <Grid container direction="row" alignItems="center" spacing={1}>
-        <Grid item> <LinkedInIcon sx={{ fontSize: 40, color:"#0e76a8" }}/></Grid>
-            <Grid item ><Typography align="justify">{contactData.linkedin}</Typography></Grid>
-        </Grid>
-        <Grid container direction="row" alignItems="center" spacing={1}>
-        <Grid item> <LanguageIcon sx={{ fontSize: 40, color:"primary"  }} /></Grid>
-            <Grid item ><Typography align="justify">{contactData.website}</Typography></Grid>
-        </Grid>
+    {Object.keys(contactData)
+        .filter( item => typeof contactData[item] === 'string' && contactData[item] !== "")
+        .map(
+            item => <ContactItem key={ contactData[item]} ContactItemIcon={contactIcons[item].icon} data={ contactData[item]} itemColor={contactIcons[item].color} />
+        )}
         </div>
         </CSSTransition>
 </Grid>

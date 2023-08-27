@@ -75,9 +75,9 @@ export default function Experience(props) {
           
           {skills.map( sk => {
             if(keySkills.includes(sk.toLowerCase())){
-                return <Typography variant='caption' color="secondary">#{sk}&nbsp;</Typography>
+                return <Typography key={sk} variant='caption' color="secondary">#{sk}&nbsp;</Typography>
             } else {
-                return <Typography variant='caption' color="text.secondary">#{sk}&nbsp;</Typography>
+                return <Typography key={sk} variant='caption' color="text.secondary">#{sk}&nbsp;</Typography>
             }
 
           })}

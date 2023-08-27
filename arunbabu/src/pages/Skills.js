@@ -5,8 +5,6 @@ import SkillCard from '../components/SkillCard'
 import { descriptions } from '../setup'
 import { CSSTransition } from 'react-transition-group'
 import { Styles } from '../Styles'
-import SkillTable from '../components/SkillTable'
-import Grid2 from '@mui/material/Unstable_Grid2/Grid2'
 import SkillTableMUI from '../components/SkillTableMUI'
 
 
@@ -61,7 +59,7 @@ export default function Skills(){
                         {
                             const {skill, experience_years, experience_months, last_used, version} = skl
                         return(
-                        <Grid item key={'skill'+ type + i}>
+                        <Grid item key={'skill'+ type + skill}>
                         <SkillCard skill={skill} exp={`${experience_years} years ${experience_months} months`}
                         version={version} last_used={last_used}  skillType={type}  />
                         </Grid>

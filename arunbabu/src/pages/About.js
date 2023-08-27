@@ -38,15 +38,15 @@ export default function About(){
         <br />
         <Grid container spacing={3} alignItems="center" justifyContent="center" style={{width:'100%'}} >
         {aboutArray.map( (str,i) => 
-        <CSSTransition key={'cssabout'+i} in={true} classNames={classes.slideUpMUI} sx={slideInMUI_Custom(1 + (i * 1) )} timeout={2000}>
+        <CSSTransition key={'cssabout'+ str} in={true} classNames={classes.slideUpMUI} sx={slideInMUI_Custom(1 + (i * 1) )} timeout={2000}>
             <Grid item container direction="row" >
             { str.split(' ').map( (wrd) => {
                 if(allSkills.includes((wrd.replace(',', '') + '').toLowerCase())){
-                    return (<span key={'aboutspan'+i}><Typography variant='h5' key={'about'+i} gutterBottom color="warning.light" 
+                    return (<span key={'aboutspan'+wrd}><Typography variant='h5' key={'about'+wrd} gutterBottom color="warning.light" 
                         style={{fontFamily:"Helvetica Neue"}}>{wrd}&nbsp;
                     </Typography></span>)
                 } else {
-                    return (<span key={'aboutspan2'+i}><Typography variant='h5' key={'about'+i} gutterBottom color="text.secondary" 
+                    return (<span key={'aboutspan2'+wrd}><Typography variant='h5' key={'about'+wrd} gutterBottom color="text.secondary" 
                         >{wrd}&nbsp; 
                     </Typography></span>)
                     }

@@ -2,7 +2,6 @@ import { Grid, Typography } from '@mui/material'
 import React from 'react'
 import { myprofile } from '../db'
 import HonorCard from '../components/HonorCard'
-import { descriptions } from '../setup'
 import LicenseCard from '../components/LicenseCard'
 import { LinkedIn } from '@mui/icons-material'
 import { CSSTransition } from 'react-transition-group'
@@ -44,7 +43,7 @@ export default function Honors(){
             <Grid container direction={'row'} spacing={3} display="flex" >
                 {myprofile.licences.map( lic => {
                     const newIcon = lic.issuing_org.toLowerCase().includes('linkedin') ? <LinkedIn /> : null
-                    return <Grid item><LicenseCard key={'lic' + lic.name} name={lic.name} issuing_org={lic.issuing_org} icon={newIcon}  ></LicenseCard></Grid>
+                    return <Grid item key={'licgrid'+lic.name}><LicenseCard key={'lic' + lic.name} name={lic.name} issuing_org={lic.issuing_org} icon={newIcon}  ></LicenseCard></Grid>
                 })}
                 
             </Grid>

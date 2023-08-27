@@ -1,22 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import {Edit, Home, Assignment, Info, Psychology, WorkHistory, 
-    School, EmojiEvents, AssignmentInd, ContactMail, Construction} from '@mui/icons-material';
-import { Link, useLocation } from "react-router-dom";
-
-function LinkTab(props) {
-  return (
-    <Tab
-      component={Link}
-      onClick={(event) => {
-        event.preventDefault();
-      }}
-      {...props}
-    />
-  );
-}
+import {Home, Info, Psychology, WorkHistory, 
+    School, EmojiEvents, ContactMail, Construction} from '@mui/icons-material';
+import { Link } from "react-router-dom";
 
 export default function NavTabs() {
   const [value, setValue] = React.useState(0);
@@ -34,10 +22,6 @@ export default function NavTabs() {
 
 ]
 
-const location = useLocation();
-const [open,setOpen] = useState(true);
-const [currentPage, setCurrentPage] = useState("Home");
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -48,10 +32,8 @@ const [currentPage, setCurrentPage] = useState("Home");
       <Tabs value={value} 
         onChange={handleChange}
         aria-label="My nav tabs" 
-        // centered
         variant="scrollable"
         scrollButtons="auto"
-        // variant='fullWidth'
         >
         {menu.map( (myMenu,index) => {
             return (<Tab
