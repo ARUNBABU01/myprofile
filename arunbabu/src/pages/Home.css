@@ -1,9 +1,9 @@
 
 .home-container {
-    display:block;
-    justify-content: left;
+    /* display:flex; */
+    /* justify-content: left;
     align-items: center;
-    min-height: 100vh;
+    min-height: 100vh; */
   }
   
   .background-image {
@@ -18,23 +18,24 @@
   }
   
   .content-container {
-    background-color: rgba(82, 81, 81, 0.1);
+    background-color: rgba(56, 55, 55, 0);
     padding: 20px;
     border-radius: 10px;
     text-align: center;
     margin-top: 200px;
   }
   
-  .icon {
-    font-size: 3rem;
-    margin: 0 10px;
-    color: rgb(57, 86, 184);
-  }
-
   .icon-container {
-    /* margin-top: 200px; */
+    /* position: relative; */
+    /* top: 200px; */
   }
   
+  .db-container {
+    /* position: relative; */
+    /* top: 200px; */
+  }
+  
+
   .text-container {
     /* margin-top: -100px; */
     text-align: left;
@@ -51,3 +52,121 @@
     color: #2196f3;
   }
   
+  .circle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background-color: rgba(252, 229, 229, 0.007);
+    margin: 0 auto;
+  }
+  
+  .center-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+  
+  .language-icons,
+  .database-icons {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    transform-origin: center;
+  }
+  
+  .icon {
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+  }
+  
+  .language-icons {
+    transform: rotate(-15deg);
+  }
+  
+  .database-icons {
+    /* transform: rotate(30deg);
+    right: -100px;
+    top: 50%;
+    transform: translate(0, -50%); */
+  }
+
+  .matrix-grid {
+    display: flex;
+    flex-direction: column;
+  /* align-items: center; */
+  }
+  
+  .row {
+    display: flex;
+  }
+  
+  .row .empty {
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+  }
+
+  /* Initial JavaScript Fade-in */
+  .icon-javascript {
+    animation: fade-in 1s ease-in-out;
+  }
+
+/* Curved Entry Animation */
+@keyframes curved-entry {
+  0% {
+    transform: translateX(-100%) translateY(-100%)
+  }
+
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+.icon-entry {
+  animation: curved-entry 3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Circular Rotation */
+@keyframes circular-rotation {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+}
+
+.icon-container.rotate {
+  /* animation: circular-rotation 10s linear infinite; */
+}
+
+.rotate-animation {
+  animation: rotate 3s linear forwards;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

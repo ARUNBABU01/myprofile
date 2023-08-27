@@ -21,10 +21,10 @@ export default function Main() {
     <>
       <TransitionGroup component={null}>
         <Grid container direction={"column"}>
-          <Grid container item>
+          <Grid  item>
             <NavTabs />
           </Grid>
-          <Grid container item className={classes.content}>
+          <Grid item className={classes.content}>
             <div className={classes.content}>
               <Routes>
                 <Route index exact path="/" element={<Home />} />

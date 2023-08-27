@@ -26,9 +26,10 @@ export default function NavTabs() {
     setValue(newValue);
   };
 
+  const navTabsHeight = 60
 
   return (
-    <Box sx={{ width: '100%' }} >
+    <Box sx={{ width: '100%',height: `${navTabsHeight}px` }} >
       <Tabs value={value} 
         onChange={handleChange}
         aria-label="My nav tabs" 
