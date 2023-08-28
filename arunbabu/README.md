@@ -72,7 +72,35 @@ To deploy in firebase and GOdaddy.
 To update database.rules.json 
 Visit [https://firebase.google.com/docs/database/security](https://firebase.google.com/docs/database/security) to learn more about security rules.
 
-### `npm run build` fails to minify
+### ```npm run build``` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
+### Firebase PRivate key setup
+Generate a Service Account Key:
+Go to the Firebase Console and navigate to your project settings. In the "Service accounts" section, click on "Generate new private key." This will download a JSON file containing the service account key.
+
+Set the Environment Variable:
+Save the downloaded JSON key file in a secure location on your computer. Then, set the GOOGLE_APPLICATION_CREDENTIALS environment variable to point to the path of the JSON key file. You can do this in your command line:
+
+```
+SET GOOGLE_APPLICATION_CREDENTIALS=path/to/your/service-account-key.json
+```
+On Unix-based systems, you can use:
+
+```
+export GOOGLE_APPLICATION_CREDENTIALS=path/to/your/service-account-key.json
+```
+Replace path/to/your/service-account-key.json with the actual path to the JSON key file.
+
+Deploy Using Default Authentication:
+Once the environment variable is set, you can deploy without needing to provide the --token:
+
+```
+firebase deploy
+```
+The Firebase CLI will automatically use the service account key for authentication.
+
+Using a service account key for authentication is more secure and aligns with best practices for managing credentials. It's a recommended approach for deploying Firebase projects.
+
+Please note that if you've successfully initiated the deployment with the --token, the deployment should proceed as usual. However, consider transitioning to the service account key method for future deployments.
