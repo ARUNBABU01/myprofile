@@ -10,6 +10,8 @@ import '../App.css'
 import { CSSTransition } from 'react-transition-group';
 import { Styles } from '../Styles';
 import { myprofile } from '../db';
+import { useUserData } from '../UserContext';
+import { USE_FIREBASE_DB } from '../Base';
 
 const slideUpMUI_custom = (timeInSecs) => ({
     "&-enter":{
@@ -38,7 +40,9 @@ export default function Experience(props) {
 
   const keySkills = []
   
-      myprofile.skills['key_skills'].forEach( skl => {
+  const {userData} = useUserData();
+  const userProfile = USE_FIREBASE_DB ? userData : myprofile
+  userProfile.skills['key_skills'].forEach( skl => {
         keySkills.push((skl.skill + '').toLowerCase())
       })
 

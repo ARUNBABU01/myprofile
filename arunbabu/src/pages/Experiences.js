@@ -5,12 +5,14 @@ import { myprofile } from '../db';
 import LaptopMacIcon from '@mui/icons-material/LaptopMac';
 import { Work, School } from '@mui/icons-material';
 import { Grid, Typography } from '@mui/material';
+import { useUserData } from '../UserContext';
+import { USE_FIREBASE_DB } from '../Base';
 
 export default function Experiences() {
 
-  const last_working_date = myprofile.experience[0].currently_working ? 'Till Working' : myprofile.experience[0].end_date
-
-
+  const {userData} = useUserData();
+  const userProfile = USE_FIREBASE_DB ? userData : myprofile
+  const last_working_date = userProfile.experience[0].currently_working ? 'Till Working' : userProfile.experience[0].end_date
 
   return (
     <>
@@ -19,12 +21,12 @@ export default function Experiences() {
     <br />
     <Timeline position="alternate">
       <Experience start_date={last_working_date} start={"end"} count={0}  exp_icon={<Work />}/>
-      {myprofile.experience.map( (exp,i) => {
+      {userProfile.experience.map( (exp,i) => {
         
-        return (<Experience {...exp} key={exp + i} start={""} count={i+1} exp_icon={<LaptopMacIcon />}/>)
+        return (<Experience {...exp} key={exp.company + exp.job_title} start={""} count={i+1} exp_icon={<LaptopMacIcon />}/>)
       
       })}
-      <Experience start_date={"Start"} start={"start"} count={myprofile.experience.length+1} exp_icon={<School />}/>
+      <Experience start_date={"Start"} start={"start"} count={userProfile.experience.length+1} exp_icon={<School />}/>
     </Timeline>
     </Grid>
     </>

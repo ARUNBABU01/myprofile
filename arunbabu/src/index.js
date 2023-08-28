@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { ThemeProvider} from '@mui/material/styles';
 import {SnackbarProvider} from 'notistack';
 import {myTheme} from './myTheme'
+import { UserProvider } from './UserContext';
 
 
 
@@ -13,12 +14,13 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
   <React.StrictMode>
-      
+    <UserProvider>
     <SnackbarProvider maxSnack={3}>
       <ThemeProvider theme={myTheme}>
         <App />
       </ThemeProvider>
     </SnackbarProvider>
+    </UserProvider>
   </React.StrictMode>
 );
 

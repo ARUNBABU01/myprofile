@@ -5,19 +5,22 @@ import SkillCard from "../components/SkillCard";
 import { descriptions } from "../setup";
 import { CSSTransition } from "react-transition-group";
 import { Styles } from "../Styles";
-import SkillTableMUI from "../components/SkillTableMUI";
 import SkillTable from "../components/SkillTable";
+import { useUserData } from "../UserContext";
+import { USE_FIREBASE_DB } from "../Base";
 
 export default function Skills() {
   const classes = Styles();
-  const skillSets = Object.keys(myprofile.skills);
+  const {userData} = useUserData();
+  const userProfile = USE_FIREBASE_DB ? userData : myprofile
+  const skillSets = Object.keys(userProfile.skills);
   const keySkillIndex = skillSets.findIndex((sk) => sk === "key_skills");
   const keySkill = skillSets.splice(keySkillIndex, 1).toString();
   skillSets.sort(
-    (a, b) => myprofile.skills[a].length - myprofile.skills[b].length
+    (a, b) => userProfile.skills[a].length - userProfile.skills[b].length
   );
   const orderedSkills = [keySkill, ...skillSets];
-  const keySkillsList = myprofile.skills[keySkill].map((skl) => skl.skill);
+  const keySkillsList = userProfile.skills[keySkill].map((skl) => skl.skill);
 
   return (
     <>
@@ -40,7 +43,7 @@ export default function Skills() {
             <Grid container key={"skill" + type} display="flex">
               <br />
               {
-                //  myprofile.skills[type].length > 10 ? null :
+                //  userProfile.skills[type].length > 10 ? null :
                 <Typography variant="h6" component={"div"}>
                   {type_clean}
                 </Typography>
@@ -63,7 +66,7 @@ export default function Skills() {
                       justifyContent: "flex-start",
                     }}
                   >
-                    {myprofile.skills[type].length > 10 ? (
+                    {userProfile.skills[type].length > 10 ? (
                       <Grid
                         container
                         item
@@ -74,19 +77,19 @@ export default function Skills() {
                       >
                         <>
                           {/* <SkillTableMUI
-                                data={myprofile.skills[type].filter( skl => !keySkillsList.includes(skl.skill))} 
+                                data={userProfile.skills[type].filter( skl => !keySkillsList.includes(skl.skill))} 
                                 title={type_clean} />  */}
                         </>
-                        {myprofile.skills[type]
+                        {userProfile.skills[type]
                           .filter((skl) => !keySkillsList.includes(skl.skill))
                           .map((skill) => (
-                            <Grid item style={{padding:"4px", margin:"4px"}} className="skill-table">
-                            <SkillTable key={skill.skill} skill={skill.skill}/>
+                            <Grid key={'grid' + skill.skill} item style={{padding:"4px", margin:"4px"}} className="skill-table">
+                            <SkillTable key={'table' + skill.skill} skill={skill.skill}/>
                             </Grid>
                           ))}
                       </Grid>
                     ) : (
-                      myprofile.skills[type]
+                      userProfile.skills[type]
                         .filter((skl) => {
                           return type === "key_skills"
                             ? true

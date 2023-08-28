@@ -3,6 +3,8 @@ import React from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { myprofile } from '../db'
 import { Styles } from '../Styles';
+import { useUserData } from '../UserContext';
+import { USE_FIREBASE_DB } from '../Base';
 
 const slideInMUI_Custom = (timeInSecs) => ({
     "&-enter":{
@@ -24,10 +26,12 @@ const slideInMUI_Custom = (timeInSecs) => ({
 
 export default function About(){
 
-    const aboutArray = myprofile.about.split(/\\n/g)
+    const {userData} = useUserData();
+    const userProfile = USE_FIREBASE_DB ? userData : myprofile
+    const aboutArray = userProfile.about.split(/\\n/g)
     const allSkills = []
-    Object.keys(myprofile.skills).forEach(type => {
-        myprofile.skills[type].forEach( skl => {
+    Object.keys(userProfile.skills).forEach(type => {
+        userProfile.skills[type].forEach( skl => {
             allSkills.push((skl.skill + '').toLowerCase())
         })
     })

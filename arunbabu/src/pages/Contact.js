@@ -11,6 +11,8 @@ import { Styles } from "../Styles";
 import { CSSTransition } from "react-transition-group";
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { ContactItem } from "../components/ContactItem";
+import { useUserData } from "../UserContext";
+import { USE_FIREBASE_DB } from "../Base";
 
 
 const contactIcons = {
@@ -28,7 +30,9 @@ export default function Contact(){
 
     const classes = Styles()
     
-        const contactData = myprofile.contact_info
+    const {userData} = useUserData();
+    const userProfile = USE_FIREBASE_DB ? userData : myprofile
+    const contactData = userProfile.contact_info
 
     return(
 <>

@@ -27,6 +27,7 @@ export default function NavTabs() {
     // { text:"Projects", icon:<AssignmentInd />, target:"/Projects" },
     { text:"Contact", icon:<ContactMail />, target:"/Contact" },
     { text:"Tech Stack", icon:<Construction />, target:"/TechInfo" },
+    { text:"Update Profile", icon:<Construction />, target:"/update" },
 
 ]
 
@@ -47,10 +48,10 @@ export default function NavTabs() {
         // orientation={isMobile ? "auto": "auto"}
         scrollButtons="auto"
         >
-        {menu.map( (myMenu,index) => {
+        {menu.map( (myMenu) => {
             return (<Tab
-                key={myMenu.text + index}
-                index={myMenu.text + index}
+                key={myMenu.text}
+                index={myMenu.text}
                 component={Link}
                 to={myMenu.target}
                 icon={myMenu.icon}
@@ -58,15 +59,6 @@ export default function NavTabs() {
                  />)
         })}
       </Tabs>
-      {value === 8 && (
-        <ScrollContainer className="tech-stack-container">
-          <ProgramIcon icon="react.png" language="React" />
-          <ProgramIcon icon="node.png" language="Node.js" />
-          <ProgramIcon icon="mongodb.png" language="MongoDB" />
-          <ProgramIcon icon="css.png" language="CSS" />
-          <ProgramIcon icon="javascript.png" language="JavaScript" />
-        </ScrollContainer>
-      )}
     </Box>
   );
 }

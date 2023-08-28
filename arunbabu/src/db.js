@@ -1,5 +1,5 @@
 const myprofile = {
-  personal_info: {
+    _id: "arunbabu_anandakumar_3639",
     firstname: "Arunbabu",
     lastname: "Anandakumar",
     dob: "21.06.1987",
@@ -7,7 +7,6 @@ const myprofile = {
     marital_status: "Married",
     differently_abled: "No",
     gender: "Male",
-  },
   contact_info: {
     email: "arun@arunbabu.dev",
     alternate_email: "arunbabu.anandakumar@gmail.com",
@@ -17,24 +16,23 @@ const myprofile = {
     github: "https://github.com/ARUNBABU01/Personal/tree/main/arunbabu",
     xing: "",
     website: "https://arunbabu.dev",
-    address: {
-      current: {
-        line1: "9/1, 10th East steet, Kamaraj Nagar",
-        line2: "Thiruvanmiyur",
-        city: "Chennai",
-        state: "Tamilnadu",
-        postcode: "600041",
-        country: "India",
-      },
-      permanent: {
-        line1: "55, Selvanayaki Amman Nagar",
-        line2: "Vilankurichi",
-        city: "Coimbatore",
-        state: "Tamilnadu",
-        postcode: "641035",
-        country: "India",
-      },
-    },
+    address: ['current_address', 'permanent_address'],
+  },
+  current_address: {
+    line1: "9/1, 10th East steet, Kamaraj Nagar",
+    line2: "Thiruvanmiyur",
+    city: "Chennai",
+    state: "Tamilnadu",
+    postcode: "600041",
+    country: "India",
+  },
+  permanent_address: {
+    line1: "55, Selvanayaki Amman Nagar",
+    line2: "Vilankurichi",
+    city: "Coimbatore",
+    state: "Tamilnadu",
+    postcode: "641035",
+    country: "India",
   },
   about:
     "    I am eager to express my interest in the Full Stack Developer position at your organization. As an analytical and quick-learning professional, I bring a solid foundation in React.js, Node.js, Express.js, Nest.js, and Angular to your team.\\nMy experience working as a Full Stack Developer in Switzerland from January 2021 to February 2023 has cultivated my problem-solving skills and passion for continuous learning. I approach challenges with a methodical and analytical mindset, ensuring solutions align seamlessly with business objectives.\\nI thrive in collaborative environments that encourage creativity and value diverse perspectives. My proficiency extends to Vanilla JavaScript, TypeScript, and other technologies, enabling me to rapidly learn and adapt to new tools and languages.\\nUtilizing project management tools like JIRA and Agile methodologies, I ensure efficient project execution. Moreover, I excel at translating intricate data into actionable insights and automating processes with VBA.\\nThe mission of your company resonates deeply with my career goals, and I am confident that my analytical prowess, problem-solving capabilities, and enthusiasm for learning align effectively with your team's requirements.\\nPlease find my attached resume for your consideration. I am excited about the prospect of contributing to organization’s accomplishments and look forward to the opportunity to discuss how my skills can benefit your team.",

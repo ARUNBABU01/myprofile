@@ -54,6 +54,7 @@ function MyNavigationBar() {
     },
     { text: "Projects", icon: <Construction />, target: "/projects" }, // Updated target here
     { text: "Contact", icon: <ContactMail />, target: "/contact" },
+    { text: "Update Profile", icon: <ContactMail />, target: "/update" },
   ];
 
   const handleClick = () => {
@@ -74,17 +75,17 @@ function MyNavigationBar() {
         {menu.map((myMenu, index) => {
           return (
             <ListItemButton
-              key={myMenu.text + index}
+              key={'listbutton' + myMenu.text}
               component={Link}
               to={myMenu.target}
               data-testid={"Tab-" + myMenu.text}
               selected={myMenu.target === currentPage}
             >
-              <ListItemIcon key={"Icon" + myMenu.text + index}>
+              <ListItemIcon key={"Icon" + myMenu.text}>
                 <Tooltip title={myMenu.text}>{myMenu.icon}</Tooltip>
               </ListItemIcon>
               <ListItemText
-                key={"Text" + myMenu.text + index}
+                key={"Text" + myMenu.text}
                 primary={myMenu.text}
               />
             </ListItemButton>

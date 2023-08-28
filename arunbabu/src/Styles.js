@@ -273,5 +273,19 @@ export const Styles = makeStyles((theme) => ({
     }
   },
 
+  profileUpdateForm: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: theme.spacing(3),
+    background: theme.palette.background.paper,
+    boxShadow: '0px 0px 5px 0px rgba(0, 0, 0, 0.3)',
+    borderRadius: '5px',
+    width: '100%',
+    maxWidth: '600px',
+    margin: '0 auto',
+  },
+
 
 }));

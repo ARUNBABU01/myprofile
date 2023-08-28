@@ -6,11 +6,14 @@ import LicenseCard from '../components/LicenseCard'
 import { LinkedIn } from '@mui/icons-material'
 import { CSSTransition } from 'react-transition-group'
 import { Styles } from '../Styles'
+import { useUserData } from '../UserContext'
+import { USE_FIREBASE_DB } from '../Base'
 
 export default function Honors(){
 
     const classes = Styles()
-
+    const {userData} = useUserData();
+    const userProfile = USE_FIREBASE_DB ? userData : myprofile
 
     return (
         <div>
@@ -22,7 +25,7 @@ export default function Honors(){
                     <Grid container direction={'row'} spacing={1} 
                     style={{width:'80%', alignItems:'center', justifyContent:'flex-start', alignContent:'center'}}>
                         {
-                        myprofile.honors.map( (hnr,i) => 
+                        userProfile.honors.map( (hnr,i) => 
                             {
                             return(
                                 <Grid item key={'honor'+ hnr.title}>
@@ -41,7 +44,7 @@ export default function Honors(){
             <br />
             <CSSTransition key={'csshonor'} in={true} classNames={classes.slideInMUI} timeout={2000}>
             <Grid container direction={'row'} spacing={3} display="flex" >
-                {myprofile.licences.map( lic => {
+                {userProfile.licences.map( lic => {
                     const newIcon = lic.issuing_org.toLowerCase().includes('linkedin') ? <LinkedIn /> : null
                     return <Grid item key={'licgrid'+lic.name}><LicenseCard key={'lic' + lic.name} name={lic.name} issuing_org={lic.issuing_org} icon={newIcon}  ></LicenseCard></Grid>
                 })}
