@@ -8,9 +8,6 @@ import VANTA_BG from "vanta/dist/vanta.halo.min";
 import image from "../assets/Myphoto4.svg";
 import styled, {keyframes} from 'styled-components'
 import { Styles } from "../Styles";
-import HelloWorld from "../components/HelloWorld";
-import Intro from "../components/Intro";
-import SubIntro from "../components/Subintro";
 
 const NAV_TABS_HEIGHT = 60;
 const ADDITIONAL_SPACE = 80;
@@ -52,7 +49,6 @@ animation: ${props => transformPosition(props)} 3s ;
 
 export default function HomeBase() {
   const [showIconContainer, setShowIconContainer] = useState(false);
-  const [toggle, setToggle] = useState(false);
   const centerIconRef = useRef(null)
   const [centerX, setCenterX] = useState(0);
   const [centerY, setCenterY] = useState(0);
@@ -69,11 +65,6 @@ const classes = Styles()
   };
 
   useEffect(() => {
-    setToggle(() => !toggle)
-  },[])
-
-  useEffect(() => {
-
     setTimeout(() => {
       startEntry();
     }, 1000);
@@ -133,25 +124,22 @@ const classes = Styles()
     };
   }, [vantaEffect]);
 
-  const handleToggle = () => {
-    setToggle(() => !toggle)
-  }
 
   return (
     
       <div ref={myRef} style={{ margin: 0, padding: 0,  width:"100vw", height: "100%" }}>
-        <Grid className={`home-container ${classes.content}`} >
+        <Grid className={`home-container ${classes.content}`}  >
           <div
             // className="background-image"
             // style={{ backgroundImage: `url(${image})` }}
             style={{height: "100%" , width:"100%"}}
           >
-            {/* <CSSTransition
+            <CSSTransition
               key="iconContainer"
               in={showIconContainer}
               classNames="slideUp"
               timeout={2000}
-            > */}
+            >
               <Grid
                 item
                 container
@@ -167,7 +155,7 @@ const classes = Styles()
                   alignItems="center"
                   className="content-container"
                   xs={12}
-                  sm={6}
+                  sm={4}
                   height={COMPONENT_HEIGHT}
                 >
                   <Grid
@@ -179,9 +167,27 @@ const classes = Styles()
                     height={"100%"}
                     justifyContent={"center"}
                   >
-                    {/* <HelloWorld /> */}
-                    <Intro />
-                    <SubIntro />
+                    <Grid
+                      item
+                      container
+                      direction="row"
+                      display="flex"
+                      justifyContent={"center"}
+                    >
+                      <Typography variant="h2" className="highlight">
+                        Hi, I'm Arun Babu...
+                      </Typography>
+                    </Grid>
+                    <Grid item>
+                      <Typography variant="h5" className="subtext">
+                        A self-developed, ever learning, and ever listening person.
+                      </Typography>
+                    </Grid>
+                    <Grid item>
+                      <Typography variant="h5" className="subtext">
+                        Believe in yourself and keep moving forward!
+                      </Typography>
+                    </Grid>
                   </Grid>
                 </Grid>
                 <Grid
@@ -189,7 +195,7 @@ const classes = Styles()
                   item
                   direction={"row"}
                   xs={12}
-                  sm={6}
+                  sm={4}
                   alignItems="center"
                   justifyContent="center"
                   height={COMPONENT_HEIGHT}
@@ -198,88 +204,121 @@ const classes = Styles()
                     item
                     container
                     direction="column"
-                    // className="icon-container"
+                    className="icon-container rotate"
                     alignItems="center"
                     justifyContent="center"
                   >
-                    <div className={`menu ${toggle ? 'active' : ''}`}>
-                    <div className="toggle" onClick={handleToggle}>
-                        <ProgramIcon
-                          icon={dynamicImportImage("javascript")}
-                          language="JavaScript"
-                          // cssClass="icon-javascript"
-                        />
-                      </div>
-                      
-                      <li style={{"--i":0, "--clr":"#25d366"}}>
+                    <div className="matrix-grid circle">
+                      <div className="row">
+                        <div className="empty"></div>
+                        <div className="empty"></div>
+                        <div className="empty"></div>
                         <ProgramIcon
                           icon={dynamicImportImage("nodejs")}
                           language="Node.js"
-                          cssClass={`icon-item`}
+                          // cssClass={`icon-entry`}
                         />
-                       </li>
-                       <li style={{"--i":1, "--clr":"#1da1f2"}}>
+                        <div className="empty"></div>
+                        <div className="empty"></div>
+                        <div className="empty"></div>
+                      </div>
+                      <div className="row">
                         <ProgramIcon
                           icon={dynamicImportImage("reactjs")}
                           language="React"
-                          cssClass={`icon-item`}
+                          cssClass={`icon-entry`}
                         />
-                        </li>
-                        <li style={{"--i":2, "--clr":"#FF5733"}}>
+                        <div className="empty"></div>
+                        <div className="empty"></div>
+                        <div className="empty"></div>
+                        <div className="empty"></div>
+                        <div className="empty"></div>
                         <ProgramIcon
                           icon={dynamicImportImage("angular")}
                           language="Angular"
-                          cssClass={`icon-item`}
+                          cssClass={`icon-entry`}
                         />
-                      </li>
-                      <li style={{"--i":3, "--clr":"#0a66c2"}}>
+                      </div>
+                      <div className="row">
+                        <div className="empty"></div>
+                        <div className="empty"></div>
+                        <div className="empty"></div>
                         <ProgramIcon
-                          icon={dynamicImportImage("typescript")}
-                          language="TypeScript"
-                          cssClass={`icon-item`}
+                          icon={dynamicImportImage("javascript")}
+                          language="JavaScript"
+                          cssClass="icon-javascript"
                         />
-                      </li>
-                      <li style={{"--i":4, "--clr":"#0a66c2"}}>
+                        <div className="empty"></div>
+                        <div className="empty"></div>
+                        <div className="empty"></div>
+                      </div>
+                      <div className="row">
                         <ProgramIcon
                           icon={dynamicImportImage("express")}
                           language="Express.js"
-                          cssClass={`icon-item`}
+                          cssClass={`icon-entry`}
                         />
-                        </li>
-                      <li style={{"--i":5, "--clr":"#c32aa3"}}>
+                        <div className="empty"></div>
+                        <div className="empty"></div>
+                        <div className="empty"></div>
+                        <div className="empty"></div>
+                        <div className="empty"></div>
                         <ProgramIcon
                           icon={dynamicImportImage("nestjs")}
                           language="Nest.js"
-                          cssClass={`icon-item`}
+                          cssClass={`icon-entry`}
                         />
-                      </li>
-                      <li style={{"--i":6, "--clr":"#0a66c2"}}>
-                      <ProgramIcon
-                        icon={dynamicImportImage("postgresql")}
-                        language="Postgresql"
-                        cssClass={`icon-item`}
-                      />
-                    </li>
-                    <li style={{"--i":7, "--clr":"#0a66c2"}}>
-                      <ProgramIcon
-                        icon={dynamicImportImage("mysql")}
-                        language="MySQL"
-                        cssClass={`icon-item`}
-                      />
-                    </li>
-                    <li style={{"--i":8, "--clr":"#25d366"}}>
-                      <ProgramIcon
-                        icon={dynamicImportImage("mongodb")}
-                        language="MongoDB"
-                        cssClass={`icon-item`}
-                      />
-                    </li>
-                      
+                      </div>
+                      <div className="row">
+                        <div className="empty"></div>
+                        <div className="empty"></div>
+                        <div className="empty"></div>
+                        <ProgramIcon
+                          icon={dynamicImportImage("typescript")}
+                          language="TypeScript"
+                          cssClass={`icon-entry`}
+                        />
+                        <div className="empty"></div>
+                        <div className="empty"></div>
+                        <div className="empty"></div>
+                      </div>
                     </div>
                   </Grid>
                 </Grid>
+                <Grid
+                  item
+                  container
+                  direction={"column"}
+                  xs={12}
+                  sm={4}
+                  className="db-container"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <div className="matrix-grid" alignItems="center"
+                    justifyContent="center">
+                    <div className="row">
+                      <ProgramIcon
+                        icon={dynamicImportImage("postgresql")}
+                        language="Postgresql"
+                      />
+                    </div>
+                    <div className="row">
+                      <ProgramIcon
+                        icon={dynamicImportImage("mysql")}
+                        language="MySQL"
+                      />
+                    </div>
+                    <div className="row">
+                      <ProgramIcon
+                        icon={dynamicImportImage("mongodb")}
+                        language="MongoDB"
+                      />
+                    </div>
+                  </div>
+                </Grid>
               </Grid>
-            {/* </CSSTransition> */}
+            </CSSTransition>
           </div>
         </Grid>
       </div>

@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+  }
+  
+  .subtext {
+    font-size: 24px;
+    text-align: left;
+    margin: 20px;
+    opacity: 0;
+    transform: translateY(20px); /* Slide down slightly */
+    animation: fadeInUp 1.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    animation-delay: 4s;
+  }
+  
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .subtext {
+      font-size: 12px;
+    }
+  }
