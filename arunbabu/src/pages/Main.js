@@ -66,7 +66,7 @@ export default function Main() {
                 {/* <Route path="/Projects" element={<Home />} /> */}
                 <Route path="/Contact" element={<Contact />} />
                 <Route path="/TechInfo" element={<TechStack />} />
-                <Route path="/update" element={<ProfileUpdateForm />} />
+                {/* <Route path="/update" element={<ProfileUpdateForm />} /> */}
               </Routes>
             </div>
           </Grid>
