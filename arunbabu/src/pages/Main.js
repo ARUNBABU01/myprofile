@@ -34,11 +34,9 @@ export default function Main() {
       const userRef = ref(database,userId);
       return onValue(userRef,snapshot => {
         console.log('Snapshot exists:', snapshot.exists());
-        console.log('Snapshot value:', snapshot.val());
         if(snapshot.exists()){
           const data = snapshot.val();
           setUserProfile(data);
-          console.log('User Profile data firebase',data)
         }
 
       })

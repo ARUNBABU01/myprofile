@@ -17,7 +17,6 @@ const ProfileUpdateForm = () => {
 
   const handleSubmit = () => {
     // Perform data submission here
-    console.log('Submitted data:', formData);
   };
 
   return (
