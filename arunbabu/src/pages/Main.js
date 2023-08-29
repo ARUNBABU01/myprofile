@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useEffect, useState, useRef } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { Styles } from "../Styles";
 import "typeface-roboto";
 import "../App.css";
@@ -24,6 +24,11 @@ export default function Main() {
   const classes = Styles();
   const {userId} = useUserData();
   const {setUserProfile} = useUserActions()
+  const location = useLocation();
+
+  const isHomePage = location.pathname === "/" || location.pathname === "/home";
+  const shouldApplyContentStyle = !isHomePage;
+
   useEffect(() => {
     if(userId){
       const userRef = ref(database,userId);
@@ -39,16 +44,17 @@ export default function Main() {
       })
     }       
       },[userId])
-
+    
   return (
     <>
       <TransitionGroup component={null}>
         <Grid container direction={"column"}>
-          <Grid  item>
+          <Grid  item container>
             <NavTabs />
           </Grid>
-          <Grid item className={classes.content}>
-            <div className={classes.content}>
+          
+          <Grid item container className={shouldApplyContentStyle ? classes.content : ""}>
+            <div className={shouldApplyContentStyle ? classes.content : ""}>
               <Routes>
                 <Route index exact path="/" element={<Home />} />
                 <Route exact path="/home" element={<Home />} />

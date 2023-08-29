@@ -1,5 +1,6 @@
 import makeStyles from "@mui/styles/makeStyles";
 import { green } from "@mui/material/colors/";
+import { width } from "@mui/system";
 
 const drawerWidth = 285;
 
@@ -24,8 +25,12 @@ export const Styles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(1.5)
+    },
     alignItems:'center',
-    justifyContent:"center"
+    justifyContent:"center",
+    width:"100%",
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,

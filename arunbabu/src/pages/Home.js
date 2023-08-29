@@ -3,10 +3,11 @@ import { Grid, Typography } from "@mui/material";
 import { CSSTransition } from "react-transition-group";
 import "./Home.css"; // Import your custom CSS file for Home
 import { ProgramIcon } from "../components/ProgramIcon";
-import HALO from "vanta/dist/vanta.halo.min";
-import BIRDS from "vanta/dist/vanta.birds.min";
+// import VANTA_BG from "vanta/dist/vanta.halo.min";
+import VANTA_BG from "vanta/dist/vanta.halo.min";
 import image from "../assets/Myphoto4.svg";
 import styled, {keyframes} from 'styled-components'
+import { Styles } from "../Styles";
 
 const NAV_TABS_HEIGHT = 60;
 const ADDITIONAL_SPACE = 80;
@@ -54,7 +55,7 @@ export default function HomeBase() {
   const centerIcon = centerIconRef.current
 
 
-
+const classes = Styles()
   const startEntry = () => {
     setShowIconContainer(true);
     // setRotateIcons(true);
@@ -101,15 +102,16 @@ export default function HomeBase() {
   useEffect(() => {
     if (!vantaEffect) {
       try {
-        const newMinHeight = Math.min(COMPONENT_HEIGHT, window.innerHeight);
-      const newMinWidth = Math.min(window.innerWidth, window.innerHeight);
-      setVantaEffect(HALO({
+      //   const newMinHeight = Math.min(COMPONENT_HEIGHT, window.innerHeight);
+      // const newMinWidth = Math.min(window.innerWidth, window.innerHeight);
+      setVantaEffect(VANTA_BG({
         el: myRef.current,
         mouseControls: true,
         touchControls: true,
         gyroControls: false,
-        minHeight: newMinHeight,
-        minWidth: newMinWidth,
+        // minHeight: 600,
+        // minWidth: 600,
+        
       })
       );
       } catch (error) {
@@ -122,13 +124,15 @@ export default function HomeBase() {
     };
   }, [vantaEffect]);
 
+
   return (
-    <>
-      <div ref={myRef} style={{ margin: 0, padding: 0, marginLeft: "-50px", height:"100%" }}>
-        <Grid className="home-container">
+    
+      <div ref={myRef} style={{ margin: 0, padding: 0,  width:"100vw", height: "100%" }}>
+        <Grid className={`home-container ${classes.content}`}  >
           <div
-            className="background-image"
+            // className="background-image"
             // style={{ backgroundImage: `url(${image})` }}
+            style={{height: "100%" , width:"100%"}}
           >
             <CSSTransition
               key="iconContainer"
@@ -319,6 +323,6 @@ export default function HomeBase() {
           </div>
         </Grid>
       </div>
-    </>
+
   );
 }
