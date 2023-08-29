@@ -27,7 +27,7 @@ export default function NavTabs() {
     // { text:"Projects", icon:<AssignmentInd />, target:"/Projects" },
     { text:"Contact", icon:<ContactMail />, target:"/Contact" },
     { text:"Tech Stack", icon:<Construction />, target:"/TechInfo" },
-    { text:"Update Profile", icon:<Construction />, target:"/update" },
+    // { text:"Update Profile", icon:<Construction />, target:"/update" },
 
 ]
 
